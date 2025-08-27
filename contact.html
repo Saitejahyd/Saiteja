@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://alcdn.msauth.net/browser/2.37.0/js/msal-browser.min.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js" defer></script>
+  <script src="socialConfig.js" defer></script>
+</head>
+<body>
+  <div class="navbar">
+  <div class="logo">My App</div>
+  <div class="nav-links">
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="signup.html">Signup</a>
+    <a href="download.html">Download</a>
+    <a href="#" onclick="login()">Login</a>
+  </div>
+  <div id="profileCircle" class="profile">U</div>
+</div>
+<div class="container">
+  <div class="sidebar">
+    <button onclick="location.href='admin.html'">Switch as Admin</button>
+  </div>
+
+  <div class="main-content">
+    <h1>Contact Us</h1>
+    <form id="contactForm" class="form">
+      <label>Name</label>
+      <input type="text" required>
+
+      <label>Email</label>
+      <input type="email" required>
+
+      <label>Message</label>
+      <textarea required></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+    <div class="social-links">
+      <a href="" id="whatsappLink">WhatsApp</a> |
+      <a href="" id="instagramLink">Instagram</a> |
+      <a href="" id="facebookLink">Facebook</a> |
+      <a href="" id="phoneLink">Phone</a>
+    </div>
+  </div>
+</div>
+<script>
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+  alert("Message sent! We will contact you shortly.");
+  this.reset();
+});
+window.onload = function() {
+  document.getElementById("whatsappLink").href = socialConfig.whatsapp;
+  document.getElementById("instagramLink").href = socialConfig.instagram;
+  document.getElementById("facebookLink").href = socialConfig.facebook;
+  document.getElementById("phoneLink").href = "tel:" + socialConfig.phone;
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://alcdn.msauth.net/browser/2.37.0/js/msal-browser.min.js"></script>
+  <script src="config.js"></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="navbar">
+  <div class="logo">My App</div>
+  <div class="nav-links">
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="signup.html">Signup</a>
+    <a href="download.html">Download</a>
+    <a href="#" onclick="login()">Login</a>
+  </div>
+  <div id="profileCircle" class="profile">U</div>
+</div>
+<div class="container">
+  <div class="sidebar">
+    <button onclick="location.href='admin.html'">Switch as Admin</button>
+  </div>
+
+  <div class="main-content">
+    <h1>Welcome to Dashboard</h1>
+    <p>Select an option from the navigation above or sidebar.</p>
+  </div>
+</div>
+</body>
+</html>
