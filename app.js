@@ -17,6 +17,9 @@ function login() {
       // Store Azure token in localStorage
       if (response.idToken) {
         localStorage.setItem('azureToken', response.idToken);
+        console.log('Azure token set in localStorage:', response.idToken);
+      } else {
+        console.log('No Azure token found in response:', response);
       }
     })
     .catch(error => console.error(error));
