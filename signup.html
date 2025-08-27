@@ -14,13 +14,36 @@
   <div class="navbar">
   <div class="logo">My App</div>
   <div class="nav-links">
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact Us</a>
-    <a href="signup.html">Signup</a>
-    <a href="download.html">Download</a>
-    <a href="#" onclick="login()">Login</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="contact.html">Contact Us</a>
+  <a href="signup.html">Signup</a>
+  <a href="download.html">Download</a>
+  <a href="#" id="loginLogoutBtn" onclick="handleLoginLogout()">Login</a>
   </div>
   <div id="profileCircle" class="profile">U</div>
+    <script>
+      function updateLoginLogoutBtn() {
+        const btn = document.getElementById('loginLogoutBtn');
+        if (localStorage.getItem('azureToken')) {
+          btn.innerText = 'Logout';
+        } else {
+          btn.innerText = 'Login';
+        }
+      }
+      function handleLoginLogout() {
+        if (localStorage.getItem('azureToken')) {
+          if (window.msalInstance) {
+            msalInstance.logoutPopup();
+          }
+          localStorage.removeItem('azureToken');
+          document.getElementById('profileCircle').innerText = 'U';
+          updateLoginLogoutBtn();
+        } else {
+          login();
+        }
+      }
+      updateLoginLogoutBtn();
+    </script>
 </div>
 <div class="container">
   <!-- Sidebar removed -->
