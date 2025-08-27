@@ -26,38 +26,23 @@
   <script>
     // News ticker effect for main page
     const mainTicker = document.getElementById('mainTicker');
-    const text = window.textConfig?.sidebarText || "Example text";
-    mainTicker.innerText = text;
-    let pos = mainTicker.offsetWidth;
-    function scrollTicker() {
-      pos--;
-      if (pos < -mainTicker.scrollWidth) pos = mainTicker.offsetWidth;
-      mainTicker.style.transform = `translateX(${pos}px)`;
-      requestAnimationFrame(scrollTicker);
+    const mainTickerText = window.textConfig?.sidebarText || "Example text";
+    mainTicker.innerText = mainTickerText;
+    let mainTickerPos = mainTicker.offsetWidth;
+    function scrollMainTicker() {
+      mainTickerPos--;
+      if (mainTickerPos < -mainTicker.scrollWidth) mainTickerPos = mainTicker.offsetWidth;
+      mainTicker.style.transform = `translateX(${mainTickerPos}px)`;
+      requestAnimationFrame(scrollMainTicker);
     }
     mainTicker.style.whiteSpace = 'nowrap';
     mainTicker.style.display = 'block';
     mainTicker.style.position = 'relative';
     mainTicker.style.overflow = 'hidden';
-    scrollTicker();
+    scrollMainTicker();
   </script>
 <div class="container">
   <!-- Sidebar removed -->
-  <script src="textConfig.js"></script>
-  <script>
-    // News ticker effect for sidebar text
-    const sidebarText = document.getElementById('sidebarText');
-    const text = window.textConfig?.sidebarText || "Example text";
-    sidebarText.innerText = text;
-    let pos = sidebarText.offsetWidth;
-    function scrollTicker() {
-      pos--;
-      if (pos < -sidebarText.scrollWidth) pos = sidebarText.offsetWidth;
-      sidebarText.style.transform = `translateX(${pos}px)`;
-      requestAnimationFrame(scrollTicker);
-    }
-    sidebarText.style.whiteSpace = 'nowrap';
-    sidebarText.style.display = 'block';
     sidebarText.style.position = 'relative';
     sidebarText.style.overflow = 'hidden';
     scrollTicker();
