@@ -11,9 +11,11 @@
 </head>
 <body>
 <script>
-  // Allow access if logged in with Azure OR manual developer credentials
+  // Allow access if Azure token exists OR manual developer credentials
   var allowAccess = false;
-  if (window.msalInstance && msalInstance.getAllAccounts().length) {
+  if (localStorage.getItem('azureToken')) {
+    allowAccess = true;
+  } else if (window.msalInstance && msalInstance.getAllAccounts().length) {
     allowAccess = true;
   } else {
     var username = prompt('Enter username:');
