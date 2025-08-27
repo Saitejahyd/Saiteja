@@ -64,11 +64,28 @@
     </form>
   </div>
 </div>
-<script>
+  <script>
 document.getElementById("signupForm").addEventListener("submit", function(e) {
   e.preventDefault();
-  alert("Thanks for registering! We will get back to you soon.");
-  this.reset();
+  const formData = {
+    name: this.name.value,
+    email: this.email.value,
+    phone: this.phone.value
+  };
+  fetch('http://localhost:3001/api/signup', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(formData)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      alert("Thanks for registering! We will get back to you soon.");
+      this.reset();
+    } else {
+      alert("Error: " + (data.error || "Unknown error"));
+    }
+  });
 });
 </script>
 </body>
