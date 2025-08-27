@@ -72,7 +72,7 @@ document.getElementById("signupForm").addEventListener("submit", function(e) {
     email: this.email.value,
     phone: this.phone.value
   };
-  fetch('http://saireddy.ddns.net:3001/api/signup', {
+  fetch('/api/signup', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(formData)

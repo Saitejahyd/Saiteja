@@ -78,7 +78,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
     email: this.email.value,
     message: this.message.value
   };
-  fetch("http://saireddy.ddns.net:3001/api/contact", {
+  fetch("/api/contact", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(formData)
