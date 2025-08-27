@@ -43,15 +43,16 @@
   </script>
 <div class="container">
   <!-- Sidebar removed -->
-    sidebarText.style.position = 'relative';
-    sidebarText.style.overflow = 'hidden';
-    scrollTicker();
-  </script>
-
+  <script src="indexConfig.js"></script>
   <div class="main-content">
-    <h1>Welcome to Dashboard</h1>
-    <p>Select an option from the navigation above or sidebar.</p>
+    <h1 id="mainHeading"></h1>
+    <p id="mainParagraph"></p>
   </div>
+  <script>
+    // Fill main content with example sentence from indexConfig.js
+    document.getElementById('mainHeading').innerText = window.indexConfig?.mainHeading || "Example Heading";
+    document.getElementById('mainParagraph').innerText = window.indexConfig?.mainParagraph || "This is an example sentence that fills the page. You can edit this text in indexConfig.js.";
+  </script>
 </div>
 </body>
 </html>

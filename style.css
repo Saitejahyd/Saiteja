@@ -9,7 +9,7 @@
 	overflow: hidden;
 	position: relative;
 }
-body { margin: 0; font-family: Arial, sans-serif; }
+body { margin: 0; font-family: Arial, sans-serif; background: #e6e6e6; }
 .navbar { display: flex; justify-content: space-between; align-items: center; background: #f8f8f8; padding: 10px 20px; border-bottom: 1px solid #ccc; }
 .logo { font-weight: bold; }
 .nav-links a { margin: 0 8px; text-decoration: none; padding: 6px 12px; background: #007BFF; color: white; border-radius: 5px; font-size: 14px; }
