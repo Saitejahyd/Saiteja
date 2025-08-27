@@ -11,11 +11,19 @@
 </head>
 <body>
 <script>
-  // Simple developer authentication using devAuthConfig.js
-  var username = prompt('Enter username:');
-  var password = prompt('Enter password:');
-  if (!(username === window.devAuthConfig.username && password === window.devAuthConfig.password)) {
-    alert('Invalid credentials. Redirecting to home.');
+  // Allow access if logged in with Azure OR manual developer credentials
+  var allowAccess = false;
+  if (window.msalInstance && msalInstance.getAllAccounts().length) {
+    allowAccess = true;
+  } else {
+    var username = prompt('Enter username:');
+    var password = prompt('Enter password:');
+    if (username === window.devAuthConfig.username && password === window.devAuthConfig.password) {
+      allowAccess = true;
+    }
+  }
+  if (!allowAccess) {
+    alert('Access denied. Please log in with Azure or use developer credentials.');
     window.location.href = 'index.html';
   }
 </script>
