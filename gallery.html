@@ -9,10 +9,12 @@
 </head>
 <body>
 <script>
-  // Restrict access to logged-in users only
-  if (!window.msalInstance || !msalInstance.getAllAccounts().length) {
-    alert("Please log in to access this page.");
-    window.location.href = "index.html";
+  // Simple developer authentication
+  var username = prompt('Enter username:');
+  var password = prompt('Enter password:');
+  if (!(username === 'Admin' && password === 'Admin123')) {
+    alert('Invalid credentials. Redirecting to home.');
+    window.location.href = 'index.html';
   }
 </script>
 <div class="navbar">
