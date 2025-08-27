@@ -1,4 +1,21 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Gallery</title><link rel='stylesheet' href='style.css'></head><body><div class="navbar">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='UTF-8'>
+  <title>Gallery</title>
+  <link rel='stylesheet' href='style.css'>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+<script>
+  // Restrict access to logged-in users only
+  if (!window.msalInstance || !msalInstance.getAllAccounts().length) {
+    alert("Please log in to access this page.");
+    window.location.href = "index.html";
+  }
+</script>
+<div class="navbar">
   <div class="logo">My App</div>
   <div class="nav-links">
     <a href="gallery.html">Gallery</a>
@@ -10,7 +27,26 @@
   <div id="profileCircle" class="profile">U</div>
 </div>
 <div class="container">
-  <div class="sidebar">
-    <button onclick="location.href='admin.html'">Switch as Admin</button>
-  </div>
-<div class='main-content'><h1>Gallery</h1></div></div></body></html>
+  <!-- Sidebar removed -->
+<div class='main-content'>
+  <h1>Gallery</h1>
+  <div id="photoGrid" class="photo-grid"></div>
+</div>
+</div>
+<script>
+  // Example photo URLs
+  const photos = [
+    "https://via.placeholder.com/150",
+    "https://via.placeholder.com/160",
+    "https://via.placeholder.com/170"
+  ];
+  const grid = document.getElementById("photoGrid");
+  photos.forEach(url => {
+    const img = document.createElement("img");
+    img.src = url;
+    img.className = "gallery-photo";
+    grid.appendChild(img);
+  });
+</script>
+</body>
+</html>

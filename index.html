@@ -5,26 +5,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
   <link rel="stylesheet" href="style.css">
-  <script src="https://alcdn.msauth.net/browser/2.37.0/js/msal-browser.min.js"></script>
+  <script src="https://alcdn.msauth.net/browser/latest/js/msal-browser.min.js"></script>
   <script src="config.js"></script>
   <script src="app.js" defer></script>
 </head>
 <body>
   <div class="navbar">
-  <div class="logo">My App</div>
-  <div class="nav-links">
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact Us</a>
-    <a href="signup.html">Signup</a>
-    <a href="download.html">Download</a>
-    <a href="#" onclick="login()">Login</a>
+    <div class="logo">My App</div>
+    <div class="nav-links">
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="signup.html">Signup</a>
+      <a href="download.html">Download</a>
+      <a href="#" onclick="login()">Login</a>
+    </div>
+    <div id="profileCircle" class="profile">U</div>
   </div>
-  <div id="profileCircle" class="profile">U</div>
-</div>
+  <div id="mainTicker" class="sidebar-text-ticker"></div>
+  <script src="textConfig.js"></script>
+  <script>
+    // News ticker effect for main page
+    const mainTicker = document.getElementById('mainTicker');
+    const text = window.textConfig?.sidebarText || "Example text";
+    mainTicker.innerText = text;
+    let pos = mainTicker.offsetWidth;
+    function scrollTicker() {
+      pos--;
+      if (pos < -mainTicker.scrollWidth) pos = mainTicker.offsetWidth;
+      mainTicker.style.transform = `translateX(${pos}px)`;
+      requestAnimationFrame(scrollTicker);
+    }
+    mainTicker.style.whiteSpace = 'nowrap';
+    mainTicker.style.display = 'block';
+    mainTicker.style.position = 'relative';
+    mainTicker.style.overflow = 'hidden';
+    scrollTicker();
+  </script>
 <div class="container">
-  <div class="sidebar">
-    <button onclick="location.href='admin.html'">Switch as Admin</button>
-  </div>
+  <!-- Sidebar removed -->
+  <script src="textConfig.js"></script>
+  <script>
+    // News ticker effect for sidebar text
+    const sidebarText = document.getElementById('sidebarText');
+    const text = window.textConfig?.sidebarText || "Example text";
+    sidebarText.innerText = text;
+    let pos = sidebarText.offsetWidth;
+    function scrollTicker() {
+      pos--;
+      if (pos < -sidebarText.scrollWidth) pos = sidebarText.offsetWidth;
+      sidebarText.style.transform = `translateX(${pos}px)`;
+      requestAnimationFrame(scrollTicker);
+    }
+    sidebarText.style.whiteSpace = 'nowrap';
+    sidebarText.style.display = 'block';
+    sidebarText.style.position = 'relative';
+    sidebarText.style.overflow = 'hidden';
+    scrollTicker();
+  </script>
 
   <div class="main-content">
     <h1>Welcome to Dashboard</h1>

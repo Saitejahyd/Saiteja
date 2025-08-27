@@ -1,4 +1,21 @@
-<!DOCTYPE html><html><head><meta charset='UTF-8'><title>Download</title><link rel='stylesheet' href='style.css'></head><body><div class="navbar">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='UTF-8'>
+  <title>Download</title>
+  <link rel='stylesheet' href='style.css'>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+<script>
+  // Restrict access to logged-in users only
+  if (!window.msalInstance || !msalInstance.getAllAccounts().length) {
+    alert("Please log in to access this page.");
+    window.location.href = "index.html";
+  }
+</script>
+<div class="navbar">
   <div class="logo">My App</div>
   <div class="nav-links">
     <a href="gallery.html">Gallery</a>
@@ -10,7 +27,5 @@
   <div id="profileCircle" class="profile">U</div>
 </div>
 <div class="container">
-  <div class="sidebar">
-    <button onclick="location.href='admin.html'">Switch as Admin</button>
-  </div>
+  <!-- Sidebar removed -->
 <div class='main-content'><h1>Download</h1></div></div></body></html>
