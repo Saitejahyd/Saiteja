@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const mysql = require('mysql2');
+const mysql = require('pg');
 
 const app = express();
 app.use(cors());
@@ -8,15 +8,17 @@ app.use(express.json());
 
 // Update with your MySQL credentials
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'NR@1216@aa',
-  database: 'Testify'
+  host: 'saireddy.ddns.net',
+  user: 'postgres',
+  password: 'root',
+  database: 'Testify',
+  port: 5432,
+  ssl: false
 });
 
 db.connect(err => {
   if (err) throw err;
-  console.log('Connected to MySQL');
+  console.log('Connected to PostgreSQL database');
 });
 
 // Signup endpoint
