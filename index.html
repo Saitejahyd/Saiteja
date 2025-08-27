@@ -17,9 +17,34 @@
       <a href="contact.html">Contact Us</a>
       <a href="signup.html">Signup</a>
       <a href="download.html">Download</a>
-      <a href="#" onclick="login()">Login</a>
+  <a href="#" id="loginLogoutBtn" onclick="handleLoginLogout()">Login</a>
     </div>
     <div id="profileCircle" class="profile">U</div>
+    <script>
+      // Change button to Logout if logged in
+      function updateLoginLogoutBtn() {
+        const btn = document.getElementById('loginLogoutBtn');
+        if (localStorage.getItem('azureToken')) {
+          btn.innerText = 'Logout';
+        } else {
+          btn.innerText = 'Login';
+        }
+      }
+      function handleLoginLogout() {
+        if (localStorage.getItem('azureToken')) {
+          // Logout
+          if (window.msalInstance) {
+            msalInstance.logoutPopup();
+          }
+          localStorage.removeItem('azureToken');
+          document.getElementById('profileCircle').innerText = 'U';
+          updateLoginLogoutBtn();
+        } else {
+          login();
+        }
+      }
+      updateLoginLogoutBtn();
+    </script>
   </div>
   <div id="mainTicker" class="sidebar-text-ticker"></div>
   <script src="textConfig.js"></script>

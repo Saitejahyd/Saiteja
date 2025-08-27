@@ -14,6 +14,10 @@ function login() {
       console.log("Logged in:", response);
       document.getElementById("profileCircle").innerText =
         response.account.username[0].toUpperCase();
+      // Update login/logout button
+      if (typeof updateLoginLogoutBtn === 'function') {
+        updateLoginLogoutBtn();
+      }
       // Store Azure token in localStorage
       if (response.idToken) {
         localStorage.setItem('azureToken', response.idToken);
